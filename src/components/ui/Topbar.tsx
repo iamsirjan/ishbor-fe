@@ -202,17 +202,6 @@ export default function Topbar() {
                   <span className="text-[#2E3A59]">+998 93 578 55 66</span>
                 </p>
 
-                {/* <InputOTP
-                  maxLength={5}
-                  value={otp}
-                  onChange={(val: string) => setOTP(val)}
-                >
-                  <InputOTPGroup>
-                    {Array.from({ length: 5 }).map((_, i) => (
-                      <InputOTPSlot key={i} index={i} />
-                    ))}
-                  </InputOTPGroup>
-                </InputOTP> */}
                 <InputOTP
                   maxLength={6}
                   value={otp}
