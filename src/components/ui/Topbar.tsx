@@ -38,7 +38,6 @@ export default function Topbar() {
   const [canResend, setCanResend] = useState(false);
 
   const [otp, setOTP] = useState("");
-
   // Login form
   const loginSchema = yup.object().shape({
     phone: yup.string().required("Номер телефона обязателен"),
@@ -48,7 +47,7 @@ export default function Topbar() {
     resolver: yupResolver(loginSchema),
   });
 
-  const { handleSubmit } = formMethods;
+  const { handleSubmit, watch, reset } = formMethods;
 
   const onLoginSubmit = (data: { phone: string }) => {
     console.log("Submitted Phone Number:", data.phone);
@@ -61,6 +60,10 @@ export default function Topbar() {
   const onOTPSubmit = () => {
     console.log("Submitted OTP:", otp);
     setOTPDialogOpen(false);
+    setOTP("");
+    reset({
+      phone: "",
+    });
   };
 
   const handleResend = () => {
@@ -139,12 +142,15 @@ export default function Topbar() {
               ))}
             </ul>
           </div>
-
+          <span
+            className="text-[#000] cursor-pointer"
+            onClick={() => setLoginDialogOpen(true)}
+          >
+            Вход в Аккаунт
+          </span>
           {/* Login Dialog */}
           <Dialog open={isLoginDialogOpen} onOpenChange={setLoginDialogOpen}>
-            <DialogTrigger asChild>
-              <span className="text-[#000] cursor-pointer">Вход в Аккаунт</span>
-            </DialogTrigger>
+            <DialogTrigger asChild></DialogTrigger>
             <DialogContent className="w-100" showCloseButton={false}>
               <DialogHeader>
                 <DialogTitle className="text-[28px] font-[700] text-center">
@@ -190,7 +196,7 @@ export default function Topbar() {
 
           {/* OTP Dialog */}
           <Dialog open={isOTPDialogOpen} onOpenChange={setOTPDialogOpen}>
-            <DialogContent className="w-150" showCloseButton={true}>
+            <DialogContent className="w-100" showCloseButton={true}>
               <DialogHeader>
                 <DialogTitle className="text-[24px] font-[700] text-center">
                   Введите проверочный код высланный по смс
@@ -199,7 +205,7 @@ export default function Topbar() {
               <div className="mt-4 flex flex-col items-center space-y-2  ">
                 <p className="text-[15px] font-[550] text-[#888888]">
                   Код был выслан на номер{" "}
-                  <span className="text-[#2E3A59]">+998 93 578 55 66</span>
+                  <span className="text-[#2E3A59]">+998 {watch("phone")}</span>
                 </p>
 
                 <InputOTP
