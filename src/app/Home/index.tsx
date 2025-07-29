@@ -2,10 +2,11 @@ import { Button } from "ishbor/components/ui/button";
 import { Input } from "ishbor/components/ui/input";
 import { ChevronDown } from "lucide-react";
 import { PopularJobs } from "./PopularJobs";
+import { AppInformation } from "./AppInformation";
 
 export const HomePage = () => {
   return (
-    <div className="flex min-h-screen flex-col items-center  w-full ">
+    <div className="flex min-h-screen flex-col  w-full ">
       {/* top filter bar */}
       <div className="w-full flex flex-col justify-center items-center bg-[#F7F9FC] py-20 gap-4">
         {/* Top title */}
@@ -71,6 +72,7 @@ export const HomePage = () => {
       </div>
 
       <PopularJobs />
+      <AppInformation />
     </div>
   );
 };
