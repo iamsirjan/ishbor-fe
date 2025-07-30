@@ -98,7 +98,7 @@ export default function Topbar() {
   ];
 
   return (
-    <div className="border-b border-[#F6F7FB]">
+    <div className="border-b border-[#F6F7FB] bg-white">
       <div className="p-2 ml-8 mr-8 ">
         <header className="text-black flex justify-between items-center text-[15px] font-[550]">
           <nav className="mt-2">
@@ -133,7 +133,9 @@ export default function Topbar() {
                   <Link
                     href={link.href}
                     className={`p-2 rounded ${
-                      pathname === link.href ? "bg-[#F6F7FB] text-black" : ""
+                      pathname === link.href
+                        ? "bg-[#F6F7FB] text-black rounded-[12px] px-[16px] py-[8px]"
+                        : ""
                     }`}
                   >
                     {link.label}

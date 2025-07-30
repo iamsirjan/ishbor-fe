@@ -6,6 +6,7 @@ import Heart from "../../assets/svg/heart.svg";
 import ClientLogo from "../../assets/svg/client-logo.svg";
 import Pin from "../../assets/svg/pin.svg";
 import { Button } from "ishbor/components/ui/button";
+import Link from "next/link";
 
 export const PopularJobs = () => {
   const jobCategories = [
@@ -195,9 +196,11 @@ export const PopularJobs = () => {
             </div>
           ))}
         </div>
-        <Button className="p-[16px] bg-[#fff] rounder-[12px] text-[17px] text-[#2E3A59] font-[550]  hover:bg-[#fff] mt-8 w-[full]">
-          Посмотреть все вакансии
-        </Button>
+        <Link href="/jobs" className="w-full max-w-5xl">
+          <Button className="p-[16px] bg-[#fff] rounder-[12px] text-[17px] text-[#2E3A59] font-[550]  hover:bg-[#fff] mt-8 w-[full]">
+            Посмотреть все вакансии
+          </Button>
+        </Link>
       </div>
     </div>
   );

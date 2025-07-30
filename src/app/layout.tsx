@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { I18nProvider } from "ishbor/provider";
 import Topbar from "ishbor/components/ui/Topbar";
+import Footer from "ishbor/components/Layout/Footer";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -30,11 +31,11 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <I18nProvider>
-          <div className="flex flex-col min-h-screen bg-[#F7F9FC]">
-            <Topbar />
-
+          <Topbar />
+          <div className="flex flex-col min-h-[77vh] bg-[#F7F9FC]">
             {children}
           </div>
+          <Footer />
         </I18nProvider>
       </body>
     </html>
